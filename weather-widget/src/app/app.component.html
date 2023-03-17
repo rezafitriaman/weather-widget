@@ -1,0 +1,51 @@
+<main>
+	<header class="container mx-auto px-16 pt-10">
+		<div class="w-full">
+			<app-search></app-search>
+		</div>
+	</header>
+	<div class="container mx-auto px-16">
+		<article aria-label="today">
+			<section class="pt-3" aria-label="Weather today">
+				<h1 class="uppercase text-slate-500 pb-1">Today</h1>
+				<div class="flex flex-col lg:flex-row gap-4 columns-2">
+					<div class="w-12/12 lg:w-4/12">
+						<app-card-base></app-card-base>
+					</div>
+					<div class="w-12/12 lg:w-8/12">
+						<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+							<app-card-sm></app-card-sm>
+							<app-card-sm></app-card-sm>
+							<app-card-sm></app-card-sm>
+							<app-card-sm></app-card-sm>
+							<app-card-sm></app-card-sm>
+							<app-card-sm></app-card-sm>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="pt-10" aria-label="Weather hourly">
+				<h2 class="uppercase text-slate-500 pb-1">Hourly</h2>
+				<div>
+					<app-card-full-width></app-card-full-width>
+				</div>
+			</section>
+		</article>
+
+		<article aria-label="Weekly">
+			<section class="pt-10" aria-label="Weather">
+				<h2 class="uppercase text-slate-500 pb-1">Week</h2>
+				<div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8">
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+					<app-card-xs></app-card-xs>
+				</div>
+			</section>
+		</article>
+	</div>
+</main>

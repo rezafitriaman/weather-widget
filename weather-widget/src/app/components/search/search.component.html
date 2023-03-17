@@ -1,0 +1,9 @@
+<form class="flex w-full">
+    <mat-form-field appearance="outline" class="w-12/12 md:w-5/12">
+        <mat-label>Search a place</mat-label>
+        <input matInput placeholder="Ex. Groningen" (focus)="onFocus($event)" [formControl]="search" aria-label="Search movie">
+        <button matSuffix mat-icon-button aria-hidden="true">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+</form>
