@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DailyCardData } from 'src/app/model/cards-data';
+import { Icon } from 'src/app/model/weather-data';
+import { IconService } from 'src/app/services/icon.service';
 
 @Component({
   selector: 'app-card-xs',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-xs.component.css']
 })
 export class CardXsComponent implements OnInit {
-
-  constructor() { }
+  @Input() data!: DailyCardData;
+  constructor(private iconService: IconService) { }
 
   ngOnInit(): void {
   }
 
+  getIcon(id: Icon) {
+    return this.iconService.getIcon(id);
+  }
 }

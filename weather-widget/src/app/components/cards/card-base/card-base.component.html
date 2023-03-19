@@ -1,6 +1,6 @@
-<div class="relative block w-full h-[21rem] p-6 bg-white border border-gray-200 rounded-lg shadow">
-    <img class="w-full h-full object-fill object-center absolute top-0 left-0 rounded-lg" src="./../../../../assets/background/rezafitriaman_weather_clear_sky_day_pastel.png" alt="clear sky" aria-hidden="true">
-    <span class="block absolute inset-0 bg-slate-900/30 rounded-lg" aria-hidden="true"></span>
+<div class="relative block w-full h-[21rem] p-4 bg-white border border-gray-200 rounded-lg shadow" *ngIf="data$ | async as data">
+    <img class="w-full h-full object-fill object-center absolute top-0 left-0 rounded-lg" *ngFor="let item of data.icon" src="./../../../../assets/background/{{item.icon}}b.png" [alt]="data.description" aria-hidden="true">
+    <span class="block absolute inset-0 bg-slate-900/50 rounded-lg" aria-hidden="true"></span>
     <article class="relative z-10 h-full flex flex-col justify-between">
         <header class="flex justify-between items-center">
             <ul class="flex content-center items-center">
@@ -8,20 +8,25 @@
                     <svg class="w-8 h-8 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
                 </li>
                 <li>
-                    <h3 class="text-slate-100 m-0">
-                        <span class="text-2xl font-light">Groningen</span>
+                    <h3 class="text-slate-100 m-0 flex flex-wrap">
+                        <span class="text-sm md:text-lg font-normal">{{data.name}} - {{data.timezone}}</span>
                     </h3>
                 </li>
             </ul>
             <figure>
-                <svg class="w-14 h-14 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0c8.8 0 16 7.2 16 16V96c0 8.8-7.2 16-16 16s-16-7.2-16-16V16c0-8.8 7.2-16 16-16zM0 256c0-8.8 7.2-16 16-16H96c8.8 0 16 7.2 16 16s-7.2 16-16 16H16c-8.8 0-16-7.2-16-16zm400 0c0-8.8 7.2-16 16-16h80c8.8 0 16 7.2 16 16s-7.2 16-16 16H416c-8.8 0-16-7.2-16-16zM256 400c8.8 0 16 7.2 16 16v80c0 8.8-7.2 16-16 16s-16-7.2-16-16V416c0-8.8 7.2-16 16-16zM75 75c6.2-6.2 16.4-6.2 22.6 0l56.6 56.6c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0L75 97.6c-6.2-6.2-6.2-16.4 0-22.6zm0 362c-6.2-6.2-6.2-16.4 0-22.6l56.6-56.6c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6L97.6 437c-6.2 6.2-16.4 6.2-22.6 0zM357.8 154.2c-6.2-6.2-6.2-16.4 0-22.6L414.4 75c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-56.6 56.6c-6.2 6.2-16.4 6.2-22.6 0zm0 203.6c6.2-6.2 16.4-6.2 22.6 0L437 414.4c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-56.6-56.6c-6.2-6.2-6.2-16.4 0-22.6zM336 256a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zm-192 0a112 112 0 1 1 224 0 112 112 0 1 1 -224 0z"/></svg>
+                <span *ngFor="let item of data.icon">
+                    <div class="text-slate-100 w-14 h-14 md:w-20 md:h-20" [innerHTML]="getIcon(item.icon)"></div>
+                    <figcaption class="absolute left-[-9999px]">{{item.description}}</figcaption>
+                </span>
             </figure>
         </header>
         <section class="flex flex-col">
             <ul class="flex relative">
                 <li>
                     <h2>
-                        <span class="text-9xl text-slate-100 font-normal">11</span>
+                        <span class="text-9xl text-slate-100 font-normal">
+                            {{data.temp | number:'1.0-0'}}
+                        </span>
                     </h2>
                 </li>
                 <li aria-label="Degree celsius">
@@ -32,7 +37,7 @@
             </ul>
             <ul class="flex relative w-36 justify-start">
                 <li>
-                    <p class="text-lg text-slate-100 font-light">Feels like 10</p>
+                    <p class="text-lg text-slate-100 font-normal">Feels like {{data.feels_like | number:'1.0-0'}}</p>
                 </li>
                 <li aria-label="Degree celsius">
                     <span aria-hidden="true">
@@ -42,13 +47,13 @@
             </ul>
         </section>
         <footer class="">
-            <ul class="flex w-full justify-between text-lg">
+            <ul class="flex w-full justify-between text-sm md:text-lg font-normal">
                 <li class="mr-1">
-                    <p class="text-slate-100 font-light">Clear sky</p>
+                    <p class="text-slate-100" *ngFor="let item of data.description">{{item.description | titlecase}}</p>
                 </li>
                 <li>
-                    <p class="text-slate-100 font-light">
-                        <time datetime="2015-05-17 19:00">25 feb 00:32 PM</time>
+                    <p class="text-slate-100">
+                        <time datetime="2015-05-17 19:00">{{(data.dt * 1000) | date: 'd MMM | hh:mm a'}}</time>
                     </p>
                 </li>
             </ul>                

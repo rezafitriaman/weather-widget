@@ -10,9 +10,6 @@ export class AppComponent {
   title = 'weather-widget';
 
   constructor(private weatherService: WeatherService) {
-    this.weatherService.getGeoCoding('groningen');
-    this.weatherService.getWeatherData(53.2190652, 6.5680077);
+
   }
-
-
 }
