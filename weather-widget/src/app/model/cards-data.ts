@@ -12,25 +12,18 @@ export interface PrimaryCardData {
 
 export interface SecondaryCardData {
     date?:   DateElement[];
-    values?: Array<any[] | number>;
-
-    // sunrice?:    number;
-    // sunset?:     number;
-    // clouds?:     number;
-    // wind_gust?:  number;
-    // humidity?:   number;
-    // pressure?:   number;
-    // visibility?: number;
-    // uvi?:        number;
-    // wind_deg?:   number;
-    // wind_speed?: number;
-    // rain?:       Rain[];
-    // snow?:       Snow[];
+    values?: ValueElement[];
 }
 
 export interface DateElement {
-    d: number;
-    n: string;
+    value: number;
+    name:  string;
+}
+
+export interface ValueElement {
+    value: any[] | number;
+    u:     string;
+    name:  string;
 }
 
 export interface HourlyCardData {

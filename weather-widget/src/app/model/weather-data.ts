@@ -97,6 +97,18 @@ export enum Icon {
     The11N = "11n",
     The13N = "13n",
     The50N = "50n",
+    Thesunrise = "sunrise",
+    Thesunset = "sunset",
+    Thecloudiness = "cloudiness",
+    Thewind_gust = "wind gust",
+    Thehumidity = "humidity",
+    Thepressure = "pressure",
+    Thevisibility = "visibility",
+    TheUV_index = "UV index",
+    Thewind_direction = "wind direction",
+    Therain = "rain",
+    Thesnow = "snow",
+    Thewind_speed = "wind speed"
 }
 
 export enum Main {
@@ -144,4 +156,16 @@ export interface Icon_map {
     '11n': string;
     '13n': string;
     '50n': string;
+    'sunrise': string;
+    'sunset': string;
+    'cloudiness': string;
+    'wind gust': string;
+    'humidity': string;
+    'pressure': string;
+    'visibility': string;
+    'UV index': string;
+    'wind direction': string;
+    'rain': string;
+    'snow': string;
+    'wind speed': string;
 }

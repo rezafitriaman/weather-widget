@@ -65,38 +65,38 @@ export class WeatherService {
     return [
       {
         date: [
-          {d: data.current.sunrise, n: 'sunrise'},
-          {d: data.current.sunset, n: 'sunset'}
+          {value: data.current.sunrise, name: 'sunrise', icon: 'sunrise'},
+          {value: data.current.sunset, name: 'sunset', icon: 'sunset'}
         ]
       },
       {
         values: [
-          data.current.clouds,
-          data.current.wind_gust ? data.current.wind_gust : 0  
+          {value: data.current.clouds, u: '%', name: 'cloudiness'},
+          {value: data.current.wind_gust ? data.current.wind_gust : 0, u: 'metre/sec', name: 'wind gust'}
         ]
       },
       {
         values: [
-          data.current.humidity,
-          data.current.pressure
+          {value:data.current.humidity, u: '%', name: 'humidity'},
+          {value: data.current.pressure, u: 'hPa', name: 'pressure'}
         ]
       },
       {
         values: [
-          data.current.visibility,
-          data.current.uvi
+          {value :data.current.visibility / 1000, u: 'km', name: 'visibility'},
+          {value: data.current.uvi, u: '', name: 'UV index'}
         ]
       },
       {
         values: [
-          data.current.wind_deg,
-          data.current.wind_speed  
+          {value: data.current.wind_deg, u: 'degrees', name: 'wind direction'},
+          {value: data.current.wind_speed, u: 'metre/sec', name: 'wind speed' }
         ]
       },
       {
         values: [
-          data.current.rain ? data.current.rain : [],
-          data.current.snow ? data.current.snow : []  
+          {value: data.current.rain ? data.current.rain : 0, u: 'mm/h', name: 'rain'},
+          {value: data.current.snow ? data.current.snow : 0, u: 'mm/h', name: 'snow'}
         ]
       },
     ];

@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   dailyCard$!: Observable<DailyCardData[]>;
 
   getGeoAndWeatherData$!: Observable<WeatherData & GeoCoding>;
+  isComplete: boolean = false;
   constructor(private weatherService: WeatherService, @Inject(DOCUMENT) private document: Document) {
     this.window = this.document.defaultView;
   }
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getPosition()
     .subscribe(position => {
-      this.onSearchResult(null, position.coords.latitude, position.coords.longitude)
+      this.onSearchResult(null, position.coords.latitude, position.coords.longitude);
     })
   }
 
@@ -52,6 +53,10 @@ export class DashboardComponent implements OnInit {
     .pipe(
       map((data: WeatherData & GeoCoding) => {
         return this.weatherService.getPrimaryCardData(data)
+      }),
+      tap(_ => {
+        console.log('object');
+        this.isComplete = true;
       })
     )
     

@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
   ]
