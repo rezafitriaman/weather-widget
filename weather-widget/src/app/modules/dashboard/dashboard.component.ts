@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onSearchResult(city?: string | null, lat?: number, lon?: number) {
+    this.isComplete = false;
     this.getGeoAndWeatherData$ = this.weatherService.getGeoAndWeatherData({city, lat, lon})
     .pipe(
       catchError((_)=> {

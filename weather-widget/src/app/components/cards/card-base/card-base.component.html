@@ -53,7 +53,7 @@
                 </li>
                 <li>
                     <p class="text-slate-100">
-                        <time datetime="2015-05-17 19:00">{{(data.dt * 1000) | date: 'd MMM | hh:mm a'}}</time>
+                        <time [attr.datetime]="(data.dt * 1000) | date: 'd MMM | hh:mm a'">{{(data.dt * 1000) | date: 'd MMM | hh:mm a'}}</time>
                     </p>
                 </li>
             </ul>                

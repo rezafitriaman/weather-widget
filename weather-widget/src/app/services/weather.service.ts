@@ -65,8 +65,8 @@ export class WeatherService {
     return [
       {
         date: [
-          {value: data.current.sunrise, name: 'sunrise', icon: 'sunrise'},
-          {value: data.current.sunset, name: 'sunset', icon: 'sunset'}
+          {value: data.current.sunrise, name: 'sunrise'},
+          {value: data.current.sunset, name: 'sunset'}
         ]
       },
       {

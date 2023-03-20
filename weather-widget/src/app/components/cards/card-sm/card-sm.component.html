@@ -4,7 +4,7 @@
             <ul>
                 <li *ngIf="item.name !== 'wind direction'">
                     <p class="text-slate-700 text-lg font-normal">
-                        <time datetime="2015-05-17 19:00">{{item.value}}{{item.u}}</time>
+                        {{item.value}}{{item.u}}
                     </p>
                 </li>
                 <li *ngIf="item.name === 'wind direction'">
@@ -40,7 +40,7 @@
             <ul>
                 <li>
                     <p class="text-slate-700 text-lg font-normal">
-                        <time datetime="2015-05-17 19:00">{{item.value | date: 'hh:mm a' }}</time>
+                        <time [attr.datetime]="item.value * 1000 | date: 'hh:mm a'">{{item.value * 1000 | date: 'hh:mm a'}}</time>
                     </p>
                 </li>
                 <li>
