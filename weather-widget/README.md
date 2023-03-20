@@ -26,7 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
 -----
 
 Naming patern:
@@ -50,8 +49,11 @@ card-base
 card-lg
 card-xl
 card-2xl
-
 _____
 
 Accessibility;
-U can use "voiceOver" on mac to read the whole page: "press option ctrl a" to read the page automatically
+U can use "voiceOver" on mac or other tool to read the whole page: "press option ctrl a" to read the page automatically.
+_____
+
+Test: 
+U can run ng test to test the project.
