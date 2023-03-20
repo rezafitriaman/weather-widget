@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Current, Daily, Icon, Icon_map, WeatherData } from '../model/weather-data';
+import { Current, Daily, WeatherData } from '../model/weather-data';
 import { GeoCoding } from '../model/geo-coding';
-import { EMPTY, Observable, catchError, map, of, share, switchMap, tap } from 'rxjs';
-import { reverse } from 'dns';
+import { Observable, map, share, switchMap, tap } from 'rxjs';
+import { DailyCardData, HourlyCardData, PrimaryCardData, SecondaryCardData } from '../model/cards-data';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +16,7 @@ export class WeatherService {
     if(city) {
       return this.http.get<GeoCoding[]>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1`);
     }
-    // if no city is provided get do de reverse mode
+    // if no city is provided do de reverse mode
     return this.http.get<GeoCoding[]>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1`);
   }
 
@@ -49,7 +49,7 @@ export class WeatherService {
     )
   }
 
-  getPrimaryCardData(data: WeatherData & GeoCoding) {
+  getPrimaryCardData(data: WeatherData & GeoCoding): PrimaryCardData {
     return {
       name: data.name,
       timezone: data.timezone,
@@ -61,10 +61,10 @@ export class WeatherService {
     };
   }
 
-  getSecondaryCardData(data: WeatherData & GeoCoding) {
+  getSecondaryCardData(data: WeatherData & GeoCoding): SecondaryCardData[]{
     return [
       {
-        date: [
+        values: [
           {value: data.current.sunrise, name: 'sunrise'},
           {value: data.current.sunset, name: 'sunset'}
         ]
@@ -72,7 +72,7 @@ export class WeatherService {
       {
         values: [
           {value: data.current.clouds, u: '%', name: 'cloudiness'},
-          {value: data.current.wind_gust ? data.current.wind_gust : 0, u: 'metre/sec', name: 'wind gust'}
+          {value: data.current.wind_gust ? data.current.wind_gust : 0, u: 'm/sec', name: 'wind gust'}
         ]
       },
       {
@@ -90,7 +90,7 @@ export class WeatherService {
       {
         values: [
           {value: data.current.wind_deg, u: 'degrees', name: 'wind direction'},
-          {value: data.current.wind_speed, u: 'metre/sec', name: 'wind speed' }
+          {value: data.current.wind_speed, u: 'm/sec', name: 'wind speed' }
         ]
       },
       {
@@ -102,7 +102,7 @@ export class WeatherService {
     ];
   }
 
-  getHourlyCardData(data: WeatherData & GeoCoding) {
+  getHourlyCardData(data: WeatherData & GeoCoding): HourlyCardData[] {
     return data.hourly.map((data: Current) => {
       return {
         dt: data.dt,
@@ -112,7 +112,7 @@ export class WeatherService {
     });
   }
   
-  getDailyCardData(data: WeatherData & GeoCoding) {
+  getDailyCardData(data: WeatherData & GeoCoding): DailyCardData[] {
     return data.daily.map((data: Daily) => {
       return {
         dt: data.dt,

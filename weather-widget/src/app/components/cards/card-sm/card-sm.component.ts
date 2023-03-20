@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SecondaryCardData } from 'src/app/model/cards-data';
-import { Icon } from 'src/app/model/weather-data';
+import { SecondaryCardData, ValueElement } from 'src/app/model/cards-data';
+import { Icon, Rain, Snow } from 'src/app/model/weather-data';
 import { IconService } from 'src/app/services/icon.service';
 
 @Component({
@@ -21,5 +21,13 @@ export class CardSmComponent implements OnInit {
 
   getIcon(id: string ) {
     return this.iconService.getIcon((id as Icon));
+  }
+
+  getDate(num: number | Snow[] | Rain[] | Icon) {
+    return (num as number * 1000);
+  }
+
+  snowOrRain(item: ValueElement) {
+    return (item.value as unknown as {"1h": number;})['1h'];
   }
 }

@@ -10,9 +10,10 @@ export interface PrimaryCardData {
     dt:          number;
 }
 
+
+
 export interface SecondaryCardData {
-    date?:   DateElement[];
-    values?: ValueElement[];
+    values: ValueElement[];
 }
 
 export interface DateElement {
@@ -21,8 +22,8 @@ export interface DateElement {
 }
 
 export interface ValueElement {
-    value: any[] | number;
-    u:     string;
+    value: Snow[] | Rain[] | number | Icon;
+    u?:     string;
     name:  string;
 }
 

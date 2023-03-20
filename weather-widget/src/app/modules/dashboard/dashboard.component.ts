@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { EMPTY, Observable, Subscription, catchError, filter, map, switchMap, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, map, tap } from 'rxjs';
 import { DailyCardData, HourlyCardData, PrimaryCardData, SecondaryCardData } from 'src/app/model/cards-data';
 import { DOCUMENT } from '@angular/common';
 
 
 import { GeoCoding } from 'src/app/model/geo-coding';
-import { Current, Daily, Description, WeatherData } from 'src/app/model/weather-data';
+import { WeatherData } from 'src/app/model/weather-data';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -67,9 +67,6 @@ export class DashboardComponent implements OnInit {
         return this.weatherService.getSecondaryCardData(data)
       })
     )
-    // .subscribe(data =>{
-    //   console.log(data);
-    // })
 
     this.hourlyCard$ = this.getGeoAndWeatherData$
     .pipe(

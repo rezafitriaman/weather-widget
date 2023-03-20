@@ -2,53 +2,59 @@
     <img class="w-full h-full object-fill object-center absolute top-0 left-0 rounded-lg" *ngFor="let item of data.icon" src="./../../../../assets/background/{{item.icon}}b.png" [alt]="data.description" aria-hidden="true">
     <span class="block absolute inset-0 bg-slate-900/50 rounded-lg" aria-hidden="true"></span>
     <article class="relative z-10 h-full flex flex-col justify-between">
-        <header class="flex justify-between items-center">
-            <ul class="flex content-center items-center">
-                <li class="mr-1" aria-hidden="true">
-                    <svg class="w-8 h-8 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
-                </li>
-                <li>
-                    <h3 class="text-slate-100 m-0 flex flex-wrap">
-                        <span class="text-sm md:text-lg font-normal">{{data.name}} - {{data.timezone}}</span>
-                    </h3>
-                </li>
-            </ul>
-            <figure>
-                <span *ngFor="let item of data.icon">
-                    <div class="text-slate-100 w-14 h-14 md:w-20 md:h-20" [innerHTML]="getIcon(item.icon)"></div>
-                    <figcaption class="absolute left-[-9999px]">{{item.description}}</figcaption>
-                </span>
-            </figure>
-        </header>
-        <section class="flex flex-col">
-            <ul class="flex relative">
-                <li>
-                    <h2>
-                        <span class="text-9xl text-slate-100 font-normal">
-                            {{data.temp | number:'1.0-0'}}
-                        </span>
-                    </h2>
-                </li>
-                <li aria-label="Degree celsius">
-                    <span aria-hidden="true">
-                        <svg class="w-5 h-5 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"/></svg>
+        <span class="flex justify-between h-4/5">
+            <span class="flex flex-col justify-between">
+                <header class="flex justify-between items-start">
+                    <ul class="flex content-center items-start">
+                        <li class="mr-1" aria-hidden="true">
+                            <svg class="w-8 h-8 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
+                        </li>
+                        <li>
+                            <h3 class="text-slate-100 m-0 flex flex-wrap">
+                                <span class="text-sm md:text-lg font-normal">{{data.name}} - {{data.timezone}}</span>
+                            </h3>
+                        </li>
+                    </ul>
+                </header>
+                <section class="flex flex-col">
+                    <ul class="flex relative">
+                        <li>
+                            <h2>
+                                <span class="text-9xl text-slate-100 font-normal">
+                                    {{data.temp | number:'1.0-0'}}
+                                </span>
+                            </h2>
+                        </li>
+                        <li aria-label="Degree celsius">
+                            <span aria-hidden="true">
+                                <svg class="w-5 h-5 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"/></svg>
+                            </span>
+                        </li>
+                    </ul>
+                    <ul class="flex relative w-36 justify-start">
+                        <li>
+                            <p class="text-lg text-slate-100 font-normal">Feels like {{data.feels_like | number:'1.0-0'}}</p>
+                        </li>
+                        <li aria-label="Degree celsius">
+                            <span aria-hidden="true">
+                                <svg class="w-2 h-2 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"/></svg>
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </span>
+            <aside>
+                <figure>
+                    <span *ngFor="let item of data.icon">
+                        <div class="text-slate-100 w-14 h-14 md:w-20 md:h-20" [innerHTML]="getIcon(item.icon)"></div>        
+                        <figcaption class="absolute left-[-9999px]">{{item.description}}</figcaption>
                     </span>
-                </li>
-            </ul>
-            <ul class="flex relative w-36 justify-start">
-                <li>
-                    <p class="text-lg text-slate-100 font-normal">Feels like {{data.feels_like | number:'1.0-0'}}</p>
-                </li>
-                <li aria-label="Degree celsius">
-                    <span aria-hidden="true">
-                        <svg class="w-2 h-2 fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"/></svg>
-                    </span>
-                </li>
-            </ul>
-        </section>
-        <footer class="">
+                </figure>
+            </aside>
+        </span>
+        <footer>
             <ul class="flex w-full justify-between text-sm md:text-lg font-normal">
-                <li class="mr-1">
+                <li>
                     <p class="text-slate-100" *ngFor="let item of data.description">{{item.description | titlecase}}</p>
                 </li>
                 <li>

@@ -49,17 +49,17 @@ export interface Daily {
     wind_gust?: number;
     pop:        number;
     uvi:        number;
-    rain?:      Rain[];
-    snow?:      Snow[];
+    rain:      Rain[];
+    snow:      Snow[];
 }
 
 export interface Snow {
-    "1h": number;
+    "1h"?: number;
 }
 
 
 export interface Rain {
-    "1h": number;
+    "1h"?: number;
 }
 
 export interface Weather {
