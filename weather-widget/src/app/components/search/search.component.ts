@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subject, debounceTime, distinctUntilChanged, filter, map, takeUntil } from 'rxjs';
+import { SearchGeoCoding } from 'src/app/model/geo-coding';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +11,8 @@ import { Observable, Subject, debounceTime, distinctUntilChanged, filter, map, t
 export class SearchComponent implements OnInit, OnDestroy {
   @Input() onCanNotFind: boolean = false;
   @Output() OnFocusEventEmit = new EventEmitter<'focus'>();
-  @Output() resultEmit = new EventEmitter<string>();
+  @Output() resultEmit = new EventEmitter<SearchGeoCoding>();
+
   search: FormControl = new FormControl('');
   result: Observable<string>;
 
@@ -32,13 +34,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       takeUntil(this.componentDestroyed$)
     )
     .subscribe(result => {
-      this.resultEmit.emit(result);
-    })
+      this.resultEmit.emit({city: result});
+    });
   }
 
   onFocus(event: FocusEvent): void {
     this.OnFocusEventEmit.emit((event.type as 'focus'));
-
   }
 
   ngOnDestroy(): void {

@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Current, Daily, WeatherData } from '../model/weather-data';
-import { GeoCoding } from '../model/geo-coding';
-import { Observable, map, share, switchMap, tap } from 'rxjs';
+import { GeoCoding, SearchGeoCoding } from '../model/geo-coding';
+import { Observable, map, share, switchMap } from 'rxjs';
 import { DailyCardData, HourlyCardData, PrimaryCardData, SecondaryCardData } from '../model/cards-data';
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  api: string = 'd8c1aa5be946a27019e8162f742ed5c2';
-
   constructor(private http: HttpClient) { }
 
-  getGeoCoding({city, lat, lon}: {city?: string | null, lat?: number, lon?: number}) {
+  getGeoCoding({city, lat, lon}: SearchGeoCoding): Observable<GeoCoding[]> {
     if(city) {
       return this.http.get<GeoCoding[]>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1`);
     }
@@ -20,17 +18,19 @@ export class WeatherService {
     return this.http.get<GeoCoding[]>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1`);
   }
 
-  getWeatherData(lat: number, lon: number) {
+  getWeatherData(lat: number, lon: number): Observable<WeatherData> {
     return this.http.get<WeatherData>(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric`)
   }
 
-  getGeoAndWeatherData({city, lat, lon}: {city?: string | null, lat?: number, lon?: number}): Observable<WeatherData & GeoCoding> {
+  getGeoAndWeatherData({city, lat, lon}: SearchGeoCoding): Observable<WeatherData & GeoCoding> {
+    // search geocoding it return array then we get the weather data
     return this.getGeoCoding({city, lat, lon})
     .pipe(
       map((geoCodingDatas: GeoCoding[]) => {
         return geoCodingDatas[0];
       }),
       switchMap(geoCodingData => {
+        // get weather data with lat and lon
         return this.getWeatherData(geoCodingData.lat, geoCodingData.lon)
         .pipe(
           map((weatherData: WeatherData) => {
@@ -40,15 +40,13 @@ export class WeatherService {
               ...weatherData
             } ;
           }),
-          tap(data => {
-            console.log(data);
-          })
         )
       }),
       share()
     )
   }
 
+  // Build only data that needed
   getPrimaryCardData(data: WeatherData & GeoCoding): PrimaryCardData {
     return {
       name: data.name,

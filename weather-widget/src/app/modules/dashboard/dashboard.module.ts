@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HorizontalComponent } from 'src/app/components/navigation/horizontal/horizontal.component';
 import { CardBaseComponent } from 'src/app/components/cards/card-base/card-base.component';
 import { CardXsComponent } from 'src/app/components/cards/card-xs/card-xs.component';
@@ -16,31 +16,31 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent,
     CardBaseComponent,
     CardXsComponent,
     CardSmComponent,
     CardFullWidthComponent,
+    DashboardComponent,
     SearchComponent,
     HorizontalComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
     MatProgressSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }

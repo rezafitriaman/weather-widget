@@ -26,8 +26,8 @@ export interface Current {
     weather:    Weather[];
     wind_gust?: number;
     pop?:       number;
-    rain?:      Rain[];
-    snow?:      Snow[];
+    rain?:      Rain;
+    snow?:      Snow;
 }
 
 export interface Daily {
@@ -49,14 +49,13 @@ export interface Daily {
     wind_gust?: number;
     pop:        number;
     uvi:        number;
-    rain:      Rain[];
-    snow:      Snow[];
+    rain:       Rain;
+    snow:       Snow;
 }
 
 export interface Snow {
     "1h"?: number;
 }
-
 
 export interface Rain {
     "1h"?: number;
@@ -114,6 +113,11 @@ export enum Icon {
 export enum Main {
     Clouds = "Clouds",
     Rain = "Rain",
+    Snow = "Snow",
+    Extreme = "Extreme",
+    Thunderstorm = "Thunderstorm",
+    Drizzle = "Drizzle",
+    Clear = "Clear"
 }
 
 export interface FeelsLike {

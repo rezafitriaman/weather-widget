@@ -7,11 +7,10 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./horizontal.component.css']
 })
 export class HorizontalComponent implements OnInit {
+  links = ['Dashboard'];
+  activeLink = this.links[0];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-  links = ['Dashboard'];
-  activeLink = this.links[0];
+  ngOnInit(): void {}
 }

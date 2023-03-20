@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SecondaryCardData, ValueElement } from 'src/app/model/cards-data';
+import { SecondaryCardData, ValueData } from 'src/app/model/cards-data';
 import { Icon, Rain, Snow } from 'src/app/model/weather-data';
 import { IconService } from 'src/app/services/icon.service';
 
@@ -12,22 +12,21 @@ export class CardSmComponent implements OnInit {
   @Input() data!: SecondaryCardData;
   constructor(private iconService: IconService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  getStyle(value: any) {
-    return `transform: rotate(${value}deg)`;
+  getStyle(value: number | Snow | Rain | Icon) {
+    return `transform: rotate(${(value as number)}deg)`;
   }
 
   getIcon(id: string ) {
     return this.iconService.getIcon((id as Icon));
   }
 
-  getDate(num: number | Snow[] | Rain[] | Icon) {
+  getDate(num: number | Snow | Rain | Icon) {
     return (num as number * 1000);
   }
 
-  snowOrRain(item: ValueElement) {
-    return (item.value as unknown as {"1h": number;})['1h'];
+  snowOrRain(item: ValueData) {
+    return (item.value as Snow | Rain)['1h'];
   }
 }

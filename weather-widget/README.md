@@ -50,3 +50,8 @@ card-base
 card-lg
 card-xl
 card-2xl
+
+_____
+
+Accessibility;
+U can use "voiceOver" on mac to read the whole page: "press option ctrl a" to read the page automatically

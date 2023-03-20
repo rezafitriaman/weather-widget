@@ -14,8 +14,7 @@ export class CardFullWidthComponent implements OnInit {
   
   constructor(private iconService: IconService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getIcon(id: Icon) {
     return this.iconService.getIcon(id);

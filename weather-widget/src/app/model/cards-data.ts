@@ -1,4 +1,4 @@
-import { Description, Icon, Main, Rain, Snow, Weather } from "./weather-data";
+import { Icon, Rain, Snow, Weather } from "./weather-data";
 
 export interface PrimaryCardData {
     name:        string;
@@ -10,10 +10,8 @@ export interface PrimaryCardData {
     dt:          number;
 }
 
-
-
 export interface SecondaryCardData {
-    values: ValueElement[];
+    values: ValueData[];
 }
 
 export interface DateElement {
@@ -21,9 +19,9 @@ export interface DateElement {
     name:  string;
 }
 
-export interface ValueElement {
-    value: Snow[] | Rain[] | number | Icon;
-    u?:     string;
+export interface ValueData {
+    value: Snow | Rain | number | Icon;
+    u?:    string;
     name:  string;
 }
 

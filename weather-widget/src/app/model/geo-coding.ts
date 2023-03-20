@@ -27,3 +27,7 @@ export interface LocalNames {
     sr: string;
     fr: string;
 }
+
+export interface SearchGeoCoding {
+    city: string | null, lat?: number, lon?: number
+}

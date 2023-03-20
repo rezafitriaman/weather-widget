@@ -7,9 +7,6 @@ import { WeatherService } from './services/weather.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'weather-widget';
 
-  constructor(private weatherService: WeatherService) {
-
-  }
+  constructor() {}
 }
