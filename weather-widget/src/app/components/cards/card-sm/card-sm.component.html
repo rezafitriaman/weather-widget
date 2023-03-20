@@ -1,4 +1,4 @@
-<div class="w-full h-40 p-6 bg-white border border-gray-200 rounded-lg shadow">
+<div class="w-full h-40 p-6 bg-white border border-gray-200 rounded-lg shadow" *ngIf="data">
     <article class="relative z-10 flex flex-col justify-between h-full">
         <section class="flex justify-between items-start" *ngFor="let item of data.values">
             <ng-container *ngIf="item.name === 'sunrise' || item.name === 'sunset'">
@@ -55,4 +55,7 @@
             </ng-container>
        </section>
     </article>
+</div>
+<div class="w-full h-40 p-6 bg-white border border-gray-200 rounded-lg shadow" *ngIf="!data">
+    <p>No data is provided</p>
 </div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import { WeatherService } from './services/weather.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   constructor() {}
 }

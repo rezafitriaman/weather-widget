@@ -1,4 +1,4 @@
-<div class="w-full h-48 p-3 bg-white border border-gray-200 rounded-lg shadow">
+<div class="w-full h-48 p-3 bg-white border border-gray-200 rounded-lg shadow" *ngIf="data">
     <article class="relative z-10 flex flex-col justify-between h-full">
         <header class="flex flex-col justify-center">
             <h4 class="text-slate-500 text-base text-center">{{data.dt * 1000 | date: 'EEEE'}}</h4>
@@ -39,4 +39,7 @@
             </figure>
         </footer>
     </article>
+</div>
+<div class="w-full h-48 p-3 bg-white border border-gray-200 rounded-lg shadow" *ngIf="!data">
+    <p>No data is provided</p>
 </div>

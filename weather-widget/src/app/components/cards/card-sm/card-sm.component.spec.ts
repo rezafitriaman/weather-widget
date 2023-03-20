@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CardSmComponent } from './card-sm.component';
+
 
 describe('CardSmComponent', () => {
   let component: CardSmComponent;
@@ -8,7 +8,8 @@ describe('CardSmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardSmComponent ]
+      declarations: [ CardSmComponent ],
+      providers: [],
     })
     .compileComponents();
   });

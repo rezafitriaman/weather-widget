@@ -1,4 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 import { SearchComponent } from './search.component';
 
@@ -8,7 +15,14 @@ describe('SearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent ],
+      imports: [
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+      ]
     })
     .compileComponents();
   });
