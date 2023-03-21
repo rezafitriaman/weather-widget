@@ -7,7 +7,7 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./horizontal.component.css']
 })
 export class HorizontalComponent implements OnInit {
-  links = ['Dashboard'];
+  links = ['dashboard'];
   activeLink = this.links[0];
 
   constructor() { }
