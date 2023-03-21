@@ -24,7 +24,7 @@ export const environment = {
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 `;
-console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));
+console.log(colors.magenta('The file `environment.demo.ts` will be written with the following content: \n'));
 console.log(colors.grey(envConfigFile));
 fs.writeFile(targetPath, envConfigFile, function (err: string) {
    if (err) {
