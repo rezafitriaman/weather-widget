@@ -1,9 +1,17 @@
 ## Start the app
-To to access the api for this weather-app please copy and paste this link "https://cors-anywhere.herokuapp.com/" on your browser and click the button.
+To to access the api for this weather-app please copy and paste this link "https://cors-anywhere.herokuapp.com/" on your browser and click the demo button.
 
 -----
 
-To start the app u can type on your terminal "ng serve --open".
+To start the app u need to change .env.sample (on the root) to .env and put your api key there.
+
+then type on your terminal "npm run config" - it will set your api-key on to environment.demo.ts file
+
+and then u can type "ng serve --open".
+
+if your localhost ask "Know your location" please allow it (click on allow button).
+
+Enjoy :)
 
 ____
 

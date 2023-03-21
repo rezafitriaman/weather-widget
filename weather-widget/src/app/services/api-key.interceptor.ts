@@ -7,6 +7,7 @@ import {
   HttpParams
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from "../../environments/environment.demo";
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
@@ -15,7 +16,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let newParams = new HttpParams({fromString: request.params.toString()});
-    newParams = newParams.set('appid', 'd8c1aa5be946a27019e8162f742ed5c2');
+    newParams = newParams.set('appid', environment.API_KEY);
     const requestClone = request.clone({
       params: newParams
     });
