@@ -1,17 +1,23 @@
-To to access the api for this weather-app please copy and paste "https://cors-anywhere.herokuapp.com/" on your browser and click the button.
+## Start the app
+To to access the api for this weather-app please copy and paste this link "https://cors-anywhere.herokuapp.com/" on your browser and click the button.
 
 -----
 
-Accessibility;
-U can use "voiceOver" on mac or other tool to read the whole page: "press option ctrl a" to read the page automatically.
+To start the app u can type on your terminal "ng serve --open".
+
+____
+
+## Accessibility
+U can use "voiceOver" on mac or other tool to read the whole page: "press option ctrl a" (on mac) to read the page automatically.
+
 _____
 
-Test: 
+## Test
 U can run "ng test" to test the project.
 
 ----
 
-Naming patern:
+## Naming patern
 -full-width
 -xs
 -sm
