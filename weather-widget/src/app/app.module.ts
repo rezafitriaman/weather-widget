@@ -5,8 +5,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ApiKeyInterceptor } from './services/api-key.interceptor';
+import { ApiKeyInterceptor } from './interceptors/api-key.interceptor';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { RetryInterceptor } from './interceptors/retry.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RetryInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
